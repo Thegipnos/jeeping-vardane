@@ -51,7 +51,6 @@ export default function GallerySection() {
 
   const handleClose = () => setSelectedIndex(null);
 
-  // Клавиатурная навигация
   useEffect(() => {
     const handleKey = (e) => {
       if (selectedIndex === null) return;
@@ -89,6 +88,7 @@ export default function GallerySection() {
                 <img
                   src={item.src}
                   alt={item.alt}
+                  onError={(e) => (e.target.style.display = 'none')}
                   className="w-full h-60 object-cover"
                 />
               </motion.div>
@@ -118,6 +118,7 @@ export default function GallerySection() {
                 <img
                   src={item.poster}
                   alt={item.alt}
+                  onError={(e) => (e.target.style.display = 'none')}
                   className="w-full h-60 object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
@@ -153,14 +154,13 @@ export default function GallerySection() {
               className="relative max-w-4xl w-full max-h-[90vh] bg-black rounded-xl overflow-hidden shadow-2xl flex items-center justify-center"
             >
               {/* Закрыть */}
-             <button
-  onClick={handleClose}
-  className="absolute top-3 right-3 bg-white/80 text-black hover:text-yellow-500 rounded-full p-2 z-50 transition"
-  aria-label="Закрыть"
->
-  <XCircle className="w-7 h-7" />
-</button>
-
+              <button
+                onClick={handleClose}
+                className="absolute top-3 right-3 bg-white/80 text-black hover:text-yellow-500 rounded-full p-2 z-50 transition"
+                aria-label="Закрыть"
+              >
+                <XCircle className="w-7 h-7" />
+              </button>
 
               {/* Стрелки */}
               <button
@@ -181,6 +181,7 @@ export default function GallerySection() {
                 <img
                   src={slides[selectedIndex].src}
                   alt={slides[selectedIndex].alt}
+                  onError={(e) => (e.target.style.display = 'none')}
                   className="w-full h-full max-h-[90vh] object-contain"
                 />
               ) : (
@@ -189,6 +190,7 @@ export default function GallerySection() {
                   poster={slides[selectedIndex].poster}
                   controls
                   autoPlay
+                  onError={(e) => (e.target.style.display = 'none')}
                   className="w-full h-full max-h-[90vh] object-contain"
                 />
               )}
