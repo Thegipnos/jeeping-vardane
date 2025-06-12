@@ -49,8 +49,11 @@ export default function RoutesSection() {
   return (
     <section id="routes" className="py-24 px-6 bg-gradient-to-b from-[#fdfaf6] to-[#fff]">
 <div className="max-w-[1000px] w-full mx-auto px-4 sm:px-6">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Программа тура «33 водопада»</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-center text-4xl font-bold text-gray-900 mb-4">
+  Программа нашего тура
+</h2>
+
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-4">
           Премиальное приключение: от ароматного чая до горных купален
         </p>
       </div>

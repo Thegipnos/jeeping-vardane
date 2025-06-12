@@ -24,7 +24,7 @@ export default function HeroSection() {
         className="relative z-10 text-center px-4"
       >
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight drop-shadow-xl">
-          Джипинг в Вардане
+          Джипинг в Вардане, Лоо, Сочи
         </h1>
 
         <p className="text-lg md:text-2xl max-w-2xl mx-auto mb-8 text-white/90 drop-shadow-md">
