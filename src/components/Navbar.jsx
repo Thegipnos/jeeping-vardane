@@ -3,7 +3,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 
 const links = [
   { href: '#about', label: 'О нас' },
-  { href: '#routes', label: 'Маршруты' },
+  { href: '#routes', label: 'Программа тура' },
   { href: '#gallery', label: 'Галерея' },
   { href: '#booking', label: 'Бронь' },
   { href: '#contacts', label: 'Контакты' },
