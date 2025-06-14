@@ -8,10 +8,11 @@ export default function HeroSection() {
     >
       {/* Фон-картинка */}
       <img
-        src="/hero.jpg"
-        alt="Фон джипинга"
-        className="absolute inset-0 w-full h-full object-cover object-[50%_70%] sm:object-center"
-      />
+  src={`${import.meta.env.BASE_URL}hero.jpg`}
+  alt="Фон джипинга"
+  className="absolute inset-0 w-full h-full object-cover object-[50%_70%] sm:object-center"
+/>
+
 
       {/* Затемнение */}
       <div className="absolute inset-0 bg-black/60" />
