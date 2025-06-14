@@ -16,17 +16,18 @@ const imageSlides = [
 const videoSlides = [
   {
     type: 'video',
-    src: '/videos/tour1.mp4',
-    poster: '/videos/poster1.jpg',
+    src: '/gallery/videos/tour1.mp4',
+    poster: '/gallery/videos/poster1.jpg',
     alt: 'Поездка по горам',
   },
   {
     type: 'video',
-    src: '/videos/tour2.mp4',
-    poster: '/videos/poster2.jpg',
+    src: '/gallery/videos/tour2.mp4',
+    poster: '/gallery/videos/poster2.jpg',
     alt: 'Водопад и река',
   },
 ];
+
 
 export default function GallerySection() {
   const [slides, setSlides] = useState([]);
