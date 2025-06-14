@@ -8,22 +8,34 @@ import {
 } from 'lucide-react';
 
 const imageSlides = [
-  { type: 'image', src: '/gallery/beach.jpg', alt: 'Закат на пляже' },
-  { type: 'image', src: '/gallery/mountains.jpg', alt: 'Горы и лес' },
-  { type: 'image', src: '/gallery/canyon.jpg', alt: 'Каньон' },
+  {
+    type: 'image',
+    src: 'https://via.placeholder.com/800x600?text=Beach',
+    alt: 'Закат на пляже',
+  },
+  {
+    type: 'image',
+    src: 'https://via.placeholder.com/800x600?text=Mountains',
+    alt: 'Горы и лес',
+  },
+  {
+    type: 'image',
+    src: 'https://via.placeholder.com/800x600?text=Canyon',
+    alt: 'Каньон',
+  },
 ];
 
 const videoSlides = [
   {
     type: 'video',
-    src: '/videos/tour1.mp4',
-    poster: '/videos/poster1.jpg',
+    src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    poster: 'https://via.placeholder.com/800x600?text=Poster+1',
     alt: 'Поездка по горам',
   },
   {
     type: 'video',
-    src: '/videos/tour2.mp4',
-    poster: '/videos/poster2.jpg',
+    src: 'https://www.w3schools.com/html/movie.mp4',
+    poster: 'https://via.placeholder.com/800x600?text=Poster+2',
     alt: 'Водопад и река',
   },
 ];
@@ -65,7 +77,6 @@ export default function GallerySection() {
   return (
     <section className="py-24 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto space-y-24">
-
         {/* Фото‑галерея */}
         <div>
           <header className="mb-10 text-center">
@@ -153,7 +164,6 @@ export default function GallerySection() {
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-4xl w-full max-h-[90vh] bg-black rounded-xl overflow-hidden shadow-2xl flex items-center justify-center"
             >
-              {/* Закрыть */}
               <button
                 onClick={handleClose}
                 className="absolute top-3 right-3 bg-white/80 text-black hover:text-yellow-500 rounded-full p-2 z-50 transition"
@@ -162,7 +172,6 @@ export default function GallerySection() {
                 <XCircle className="w-7 h-7" />
               </button>
 
-              {/* Стрелки */}
               <button
                 onClick={handlePrev}
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-black hover:text-yellow-500 bg-white/80 rounded-full p-2 z-40"
@@ -176,7 +185,6 @@ export default function GallerySection() {
                 <ChevronRight className="w-7 h-7" />
               </button>
 
-              {/* Контент */}
               {slides[selectedIndex].type === 'image' ? (
                 <img
                   src={slides[selectedIndex].src}
