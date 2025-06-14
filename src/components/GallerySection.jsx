@@ -8,25 +8,27 @@ import {
 } from 'lucide-react';
 
 const imageSlides = [
-  { type: 'image', src: '/gallery/beach.jpg', alt: 'Закат на пляже' },
-  { type: 'image', src: '/gallery/mountains.jpg', alt: 'Горы и лес' },
-  { type: 'image', src: '/gallery/canyon.jpg', alt: 'Каньон' },
+  { type: 'image', src: `${import.meta.env.BASE_URL}gallery/beach.jpg`, alt: 'Закат на пляже' },
+  { type: 'image', src: `${import.meta.env.BASE_URL}gallery/mountains.jpg`, alt: 'Горы и лес' },
+  { type: 'image', src: `${import.meta.env.BASE_URL}gallery/canyon.jpg`, alt: 'Каньон' },
 ];
+
 
 const videoSlides = [
   {
     type: 'video',
-    src: '/gallery/videos/tour1.mp4',
-    poster: '/gallery/poster1.jpg',
+    src: `${import.meta.env.BASE_URL}gallery/videos/tour1.mp4`,
+    poster: `${import.meta.env.BASE_URL}gallery/poster1.jpg`,
     alt: 'Поездка по горам',
   },
   {
     type: 'video',
-    src: '/gallery/videos/tour2.mp4',
-    poster: '/gallery/poster2.jpg',
+    src: `${import.meta.env.BASE_URL}gallery/videos/tour2.mp4`,
+    poster: `${import.meta.env.BASE_URL}gallery/poster2.jpg`,
     alt: 'Водопад и река',
   },
 ];
+
 
 
 export default function GallerySection() {
