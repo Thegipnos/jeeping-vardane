@@ -17,13 +17,13 @@ const videoSlides = [
   {
     type: 'video',
     src: '/gallery/videos/tour1.mp4',
-    poster: '/gallery/videos/poster1.jpg',
+    poster: '/gallery/poster1.jpg',
     alt: 'Поездка по горам',
   },
   {
     type: 'video',
     src: '/gallery/videos/tour2.mp4',
-    poster: '/gallery/videos/poster2.jpg',
+    poster: '/gallery/poster2.jpg',
     alt: 'Водопад и река',
   },
 ];
