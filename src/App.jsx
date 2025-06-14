@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -14,6 +16,14 @@ import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 
 export default function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      once: true,
+      easing: 'ease-out-cubic',
+    });
+  }, []);
+
   return (
     <>
       <Helmet>

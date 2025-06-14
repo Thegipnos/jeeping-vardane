@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import { Mountain, UtensilsCrossed, Car } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const reasons = [
   {
@@ -20,6 +22,14 @@ const reasons = [
 ];
 
 export default function WhyGoSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      once: true,
+      easing: 'ease-out-cubic',
+    });
+  }, []);
+
   return (
     <section className="py-20 px-6 bg-white" id="why">
       <div className="max-w-5xl mx-auto text-center mb-12">
@@ -29,20 +39,18 @@ export default function WhyGoSection() {
 
       <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {reasons.map((item, idx) => (
-          <motion.div
+          <div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: idx * 0.15 }}
             className="bg-white border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
+            data-aos="fade-up"
+            data-aos-delay={idx * 150}
           >
             <div className="flex flex-col items-center text-center">
               {item.icon}
               <h3 className="text-lg font-semibold text-gray-800 mb-2">{item.title}</h3>
               <p className="text-gray-600 text-sm">{item.text}</p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
