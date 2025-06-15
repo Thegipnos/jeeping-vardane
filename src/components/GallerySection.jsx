@@ -1,206 +1,227 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  PlayCircle,
-  XCircle,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, PlayCircle } from 'lucide-react';
 
 const imageSlides = [
-  { type: 'image', src: `${import.meta.env.BASE_URL}gallery/beach.jpg`, alt: 'Закат на пляже' },
-  { type: 'image', src: `${import.meta.env.BASE_URL}gallery/mountains.jpg`, alt: 'Горы и лес' },
-  { type: 'image', src: `${import.meta.env.BASE_URL}gallery/canyon.jpg`, alt: 'Каньон' },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983068/IMG_5637_o28g4h.jpg',
+    alt: 'IMG 5637',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983068/IMG_5602_fvbbh4.jpg',
+    alt: 'IMG 5602',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983066/IMG_5672_nrdnkv.jpg',
+    alt: 'IMG 5672',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983063/IMG_5678_diypqv.jpg',
+    alt: 'IMG 5678',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983063/IMG_5625_gjgo8s.jpg',
+    alt: 'IMG 5625',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983060/IMG_5634_jwwyrr.jpg',
+    alt: 'IMG 5634',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983059/IMG_5647_q1wvyl.jpg',
+    alt: 'IMG 5647',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983055/IMG_5529_j8izxq.jpg',
+    alt: 'IMG 5529',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983051/IMG_5601_swzv1c.jpg',
+    alt: 'IMG 5601',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983050/IMG_5615_uegtl5.jpg',
+    alt: 'IMG 5615',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983050/IMG_5584_fcfmgr.jpg',
+    alt: 'IMG 5584',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983043/IMG_5531_hawlfr.jpg',
+    alt: 'IMG 5531',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983040/IMG_5564_euxpxq.jpg',
+    alt: 'IMG 5564',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983038/IMG_5514_c3wwhl.jpg',
+    alt: 'IMG 5514',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983034/IMG_5537_i3u8hh.jpg',
+    alt: 'IMG 5537',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983030/IMG_5516_uwbxxa.jpg',
+    alt: 'IMG 5516',
+  },
 ];
 
 
 const videoSlides = [
   {
-    type: 'video',
     src: `${import.meta.env.BASE_URL}gallery/videos/tour1.mp4`,
     poster: `${import.meta.env.BASE_URL}gallery/poster1.jpg`,
     alt: 'Поездка по горам',
   },
   {
-    type: 'video',
     src: `${import.meta.env.BASE_URL}gallery/videos/tour2.mp4`,
     poster: `${import.meta.env.BASE_URL}gallery/poster2.jpg`,
     alt: 'Водопад и река',
   },
 ];
 
-
-
-export default function GallerySection() {
-  const [slides, setSlides] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-
-  const openViewer = (items, index) => {
-    setSlides(items);
-    setSelectedIndex(index);
-  };
-
-  const handleNext = () => {
-    if (selectedIndex !== null) {
-      setSelectedIndex((selectedIndex + 1) % slides.length);
-    }
-  };
-
-  const handlePrev = () => {
-    if (selectedIndex !== null) {
-      setSelectedIndex((selectedIndex - 1 + slides.length) % slides.length);
-    }
-  };
-
-  const handleClose = () => setSelectedIndex(null);
-
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (selectedIndex === null) return;
-      if (e.key === 'ArrowRight') handleNext();
-      if (e.key === 'ArrowLeft') handlePrev();
-      if (e.key === 'Escape') handleClose();
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [selectedIndex]);
+function ImageCarousel({ slides }) {
+  const [index, setIndex] = useState(0);
+  const next = () => setIndex((index + 1) % slides.length);
+  const prev = () => setIndex((index - 1 + slides.length) % slides.length);
 
   return (
+    <div className="relative">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={(e, info) => {
+            if (info.offset.x < -100) next();
+            if (info.offset.x > 100) prev();
+          }}
+          className="rounded-2xl overflow-hidden shadow-xl bg-black"
+        >
+          <img
+            src={slides[index].src}
+            alt={slides[index].alt}
+            className="w-full aspect-video object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-yellow-400 hover:text-white text-black rounded-full p-2 shadow z-10"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-yellow-400 hover:text-white text-black rounded-full p-2 shadow z-10"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </div>
+  );
+}
+
+function VideoCarousel({ slides }) {
+  const [index, setIndex] = useState(0);
+  const [playing, setPlaying] = useState(false);
+
+  const next = () => {
+    setIndex((index + 1) % slides.length);
+    setPlaying(false);
+  };
+
+  const prev = () => {
+    setIndex((index - 1 + slides.length) % slides.length);
+    setPlaying(false);
+  };
+
+  return (
+    <div className="relative">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`${index}-${playing}`}
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={(e, info) => {
+            if (info.offset.x < -100) next();
+            if (info.offset.x > 100) prev();
+          }}
+          className="rounded-2xl overflow-hidden shadow-xl bg-black relative"
+        >
+          {!playing ? (
+            <div
+              className="relative cursor-pointer"
+              onClick={() => setPlaying(true)}
+            >
+              <img
+                src={slides[index].poster}
+                alt={slides[index].alt}
+                className="w-full aspect-video object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                <PlayCircle className="w-16 h-16 text-white hover:text-yellow-400 transition" />
+              </div>
+            </div>
+          ) : (
+            <video
+              src={slides[index].src}
+              poster={slides[index].poster}
+              controls
+              autoPlay
+              className="w-full aspect-video object-cover"
+            />
+          )}
+        </motion.div>
+      </AnimatePresence>
+
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-yellow-400 hover:text-white text-black rounded-full p-2 shadow z-10"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-yellow-400 hover:text-white text-black rounded-full p-2 shadow z-10"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </div>
+  );
+}
+
+export default function GallerySection() {
+  return (
     <section className="py-24 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto space-y-24">
+      <div className="max-w-3xl mx-auto space-y-24">
 
         {/* Фото‑галерея */}
-        <div>
-          <header className="mb-10 text-center">
-            <h2 className="text-4xl font-extrabold tracking-tight text-black dark:text-white">
-              Фото‑галерея
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Кадры с наших лучших путешествий
-            </p>
-          </header>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {imageSlides.map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => openViewer(imageSlides, idx)}
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  onError={(e) => (e.target.style.display = 'none')}
-                  className="w-full h-60 object-cover"
-                />
-              </motion.div>
-            ))}
-          </div>
+        <div className="text-center space-y-6">
+          <h2 className="text-4xl font-extrabold text-black dark:text-white">Фото‑галерея</h2>
+          <p className="text-gray-600 dark:text-gray-400">Кадры с наших лучших путешествий</p>
+          <ImageCarousel slides={imageSlides} />
         </div>
 
         {/* Видео‑галерея */}
-        <div>
-          <header className="mb-10 text-center">
-            <h2 className="text-4xl font-extrabold tracking-tight text-black dark:text-white">
-              Видео‑галерея
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Прокрутите самые яркие моменты в движении
-            </p>
-          </header>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {videoSlides.map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => openViewer(videoSlides, idx)}
-              >
-                <img
-                  src={item.poster}
-                  alt={item.alt}
-                  onError={(e) => (e.target.style.display = 'none')}
-                  className="w-full h-60 object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                  <PlayCircle className="w-12 h-12 text-white drop-shadow-lg" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="text-center space-y-6">
+          <h2 className="text-4xl font-extrabold text-black dark:text-white">Видео‑галерея</h2>
+          <p className="text-gray-600 dark:text-gray-400">Посмотрите атмосферу вживую</p>
+          <VideoCarousel slides={videoSlides} />
         </div>
+
       </div>
-
-      {/* Просмотрщик */}
-      <AnimatePresence>
-        {selectedIndex !== null && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleClose}
-          >
-            <motion.div
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={(e, info) => {
-                if (info.offset.x < -100) handleNext();
-                if (info.offset.x > 100) handlePrev();
-              }}
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full max-h-[90vh] bg-black rounded-xl overflow-hidden shadow-2xl flex items-center justify-center"
-            >
-              {/* Закрыть */}
-              <button
-                onClick={handleClose}
-                className="absolute top-3 right-3 bg-white/80 text-black hover:text-yellow-500 rounded-full p-2 z-50 transition"
-                aria-label="Закрыть"
-              >
-                <XCircle className="w-7 h-7" />
-              </button>
-
-              {/* Стрелки */}
-              <button
-                onClick={handlePrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-black hover:text-yellow-500 bg-white/80 rounded-full p-2 z-40"
-              >
-                <ChevronLeft className="w-7 h-7" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-black hover:text-yellow-500 bg-white/80 rounded-full p-2 z-40"
-              >
-                <ChevronRight className="w-7 h-7" />
-              </button>
-
-              {/* Контент */}
-              {slides[selectedIndex].type === 'image' ? (
-                <img
-                  src={slides[selectedIndex].src}
-                  alt={slides[selectedIndex].alt}
-                  onError={(e) => (e.target.style.display = 'none')}
-                  className="w-full h-full max-h-[90vh] object-contain"
-                />
-              ) : (
-                <video
-                  src={slides[selectedIndex].src}
-                  poster={slides[selectedIndex].poster}
-                  controls
-                  autoPlay
-                  onError={(e) => (e.target.style.display = 'none')}
-                  className="w-full h-full max-h-[90vh] object-contain"
-                />
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
