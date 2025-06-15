@@ -3,22 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, PlayCircle } from 'lucide-react';
 
 const imageSlides = [
-  {
-    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983068/IMG_5637_o28g4h.jpg',
-    alt: 'IMG 5637',
-  },
-  {
+
+    {
     src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983068/IMG_5602_fvbbh4.jpg',
     alt: 'IMG 5602',
   },
   {
-    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983066/IMG_5672_nrdnkv.jpg',
-    alt: 'IMG 5672',
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983068/IMG_5637_o28g4h.jpg',
+    alt: 'IMG 5637',
   },
-  {
-    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983063/IMG_5678_diypqv.jpg',
-    alt: 'IMG 5678',
-  },
+
+ 
+  
   {
     src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983063/IMG_5625_gjgo8s.jpg',
     alt: 'IMG 5625',
@@ -66,6 +62,14 @@ const imageSlides = [
   {
     src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983030/IMG_5516_uwbxxa.jpg',
     alt: 'IMG 5516',
+  },
+   {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983066/IMG_5672_nrdnkv.jpg',
+    alt: 'IMG 5672',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwvez3fyb/image/upload/f_auto,q_auto,w_1200/v1749983063/IMG_5678_diypqv.jpg',
+    alt: 'IMG 5678',
   },
 ];
 
